@@ -1,0 +1,143 @@
+sslh (1.10~rc1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Giel van Schijndel <me@mortis.eu>  Tue, 22 Nov 2011 13:19:03 +0100
+
+sslh (1.9-1) unstable; urgency=low
+
+  * New upstream release (Closes: #632834, #611611)
+  * Drop debian/patches/01_option_user_manpage_error.diff, fixed upstream
+  * Debconf translation: Add ja.po, thanks Hideki Yamane (Closes: #628461)
+  * debian/control:
+    + Newline after 80 chars in Depends
+    + Add Vcs-{Browser,Git}, point to collab-maint
+  * Bump to Standards-Version 3.9.2 (no changes needed)
+  * debian/install: install new sslh-select binary
+  * debian/links: provide manpage for new sslh-select binary (same as sslh)
+  * debian/init:
+    + Remove VERBOSE test to always print message
+    + Remove DAEMON variable, used in /etc/default/sslh to choose binary
+    + Move "is binary executable" test after sourcing /etc/default/sslh
+  * debian/default:
+    + DAEMON to choose sslh binary (fork or new single thread)
+    + Use long options and change ss{l,h} options (upstream change)
+  * debian/NEWS: document that a new binary sslh-select is provided
+  * debian/copyright: Update to dep5 format
+  * debian/logcheck.ignore.server: Update rule
+    (upstream changes of logformat and IPv6 support)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sun, 14 Aug 2011 15:34:03 +0200
+
+sslh (1.7a-3) unstable; urgency=low
+
+  * Debconf translation:
+    + Add es.po, thanks Camaléon (Closes: #600181)
+    + Add vi.po, thanks Clytie Siddall (Closes: #598591)
+  * debian/init: Change /etc/inetd.conf test (Closes: #603608)
+  * debian/portrm: Test update-inetd and deluser presence before using it
+    (piuparts removal error)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Tue, 02 Nov 2010 21:44:49 +0100
+
+sslh (1.7a-2) unstable; urgency=low
+
+  * Change DAEMON_ARGS to DAEMON_OPTS in initscript to match /etc/default/sslh
+    variable (Closes: #596199)
+  * Modify initscript to return 2 and not exit if RUN=no (Closes: #596111)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Thu, 09 Sep 2010 22:27:04 +0200
+
+sslh (1.7a-1) unstable; urgency=low
+
+  * New upstream release (Closes: #563156)
+    + Provide inetd support (thanks Dima Barsky)
+  * Provide debconf to standalone/inetd mode selection
+    + Add fr.po, thanks David Prévot for proofreadig
+    + Add it.po, thanks Vincenzo Campanella
+    + Add sv.po, thanks Martin Bagge            (Closes: #593673)
+    + Add ru.po, thanks Yuri Kozlov             (Closes: #593766)
+    + Add de.po, thanks Chris Leick             (Closes: #594019)
+    + Add pt.po, thanks Rui Branco              (Closes: #594124)
+    + Add da.po, thanks Joe Dalton              (Closes: #594212)
+    + Add cs.po, thanks Michal Simunek          (Closes: #594508)
+    + Add pt_BR.po, thanks Adriano Rafael Gomes (Closes: #594751)
+  * debian/logcheck.ignore.server: Provide logcheck ignore rule
+    (Closes: #565858, thanks Craig Small)
+  * debian/init: New initscript (based on /etc/init.d/skeleton):
+    + Depend on $remote_fs, $syslog and $network in Required-{Start,Stop}
+    + Test inetd mode, to not start in standalone
+  * debian/default:
+    + Delete option "-P /var/run/sslh.pid" (default value)
+    + Add "RUN=no" to easy turn on
+  * Bump to Standards-Version 3.9.1 (no changes needed)
+  * debian/control:
+    + Depends on ${misc:Depends}, update-inetd, lsb-base
+      and suggest openbsd-inetd | inet-superserver
+    + Increase debhelper dependency to 7.0.50~
+    + Build depends on po-debconf for templates
+  * Switch to dpkg-source 3.0 (quilt) format
+  * debian/manpages: Add sslh.8.gz (dh_installman)
+  * debian/rules: Rewrite based on more simple dh_make 0.55 template
+  * debian/postrm: Delete sslh user in purge case only
+  * debian/post{inst,rm}: Delete unneccessary case
+  * debian/patches/01_option_user_manpage_error.diff:
+    Fix little typo in manpage, reported upstream
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Mon, 26 Jul 2010 23:40:01 +0200
+
+sslh (1.6i-4) unstable; urgency=low
+
+  * debian/control:
+    Recommends apache2 and openssh-server instead of depends on them.
+    Also recommend ssh-server as a virtual alternative (Closes: #559343).
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sun, 06 Dec 2009 16:02:39 +0100
+
+sslh (1.6i-3) unstable; urgency=low
+
+  * debian/control: Conflicts with libnet-proxy-perl (Closes: #550997).
+  * Bump to Standards-Version 3.8.3 (no changes needed).
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Wed, 14 Oct 2009 19:32:23 +0000
+
+sslh (1.6i-2) unstable; urgency=low
+
+  * Bump to Standards-Version 3.8.2 (no changes needed).
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Wed, 15 Jul 2009 00:00:43 +0000
+
+sslh (1.6i-1) unstable; urgency=low
+
+  * New upstream release
+   - Fix MAX_PATH (static allocation instead)
+   - Fix openlog call
+  * Bump to Standards-Version 3.8.1 (no changes needed).
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sun, 26 Apr 2009 12:13:15 +0000
+
+sslh (1.6h-1) unstable; urgency=low
+
+  * New upstream release
+    - Fix zombies process after a while (to finish process cleanly)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sat, 25 Apr 2009 15:32:18 +0200
+
+sslh (1.6g-3) unstable; urgency=low
+
+  * Fix postinstall printed message:
+   /etc/default/ssh to /etc/default/sslh in postinst
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Fri, 27 Feb 2009 14:49:57 +0100
+
+sslh (1.6g-2) unstable; urgency=low
+
+  * Fix some typos in README.Debian (thanks to the author)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Wed, 04 Feb 2009 19:18:12 +0100
+
+sslh (1.6g-1) unstable; urgency=low
+
+  * Initial release (Closes: #497095)
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Fri, 17 Jan 2009 16:23:51 +0100

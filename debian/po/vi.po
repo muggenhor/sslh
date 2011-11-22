@@ -1,0 +1,54 @@
+# Vietnamese translation for SSLh.
+# Copyright © 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the sslh package.
+# Clytie Siddall <clytie@riverland.net.au>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh 1.7a-1\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-09-30 19:39+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+#: ../templates:1001
+#. Type: select
+#. Choices
+msgid "from inetd"
+msgstr "từ inetd"
+
+#: ../templates:1001
+#. Type: select
+#. Choices
+msgid "standalone"
+msgstr "độc lập"
+
+#: ../templates:1002
+#. Type: select
+#. Description
+msgid "Run sslh:"
+msgstr "Chạy sslh:"
+
+#: ../templates:1002
+#. Type: select
+#. Description
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"Có thể chạy trình sslh hoặc từ inetd như là một dịch vụ, hoặc như là một trình phục vụ độc lập. Mỗi tùy chọn có lợi ích riêng. Có chỉ vài kết nối mỗi ngày thì rất có thể tốt hơn nếu bạn chạy sslh từ inetd để tiết kiệm tài nguyên."
+
+#: ../templates:1002
+#. Type: select
+#. Description
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr "Mặt khác, có nhiều kết nối thì nên chạy sslh như là một trình phục vụ độc lập, để tránh tạo và thực hiện một tiến trình mới cho mỗi kết nối gửi đến."

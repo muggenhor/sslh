@@ -1,0 +1,50 @@
+#!/bin/sh
+set -e
+
+. /usr/share/debconf/confmodule
+
+case "$1" in
+	remove)
+		# if sslh launched by inetd, reload it to disable sslh
+		db_get sslh/inetd_or_standalone
+
+		if [ "$RET" = "from inetd" ]
+		then
+			# Disable inetd mode to avoid errors and SIGHUP inetd
+			echo "Disable sslh inetd service"
+			update-inetd --disable https
+		fi
+	;;
+
+	purge)
+		# Remove inetd.conf launcher
+		if [ -x /usr/sbin/update-inetd ]
+		then
+			echo "Remove sslh inetd service"
+			update-inetd --remove https
+		fi
+
+		# delete sslh daemon user
+		# test if exists just to don't generate error
+		if getent passwd sslh > /dev/null
+		then
+			if [ -x /usr/sbin/deluser ]
+			then
+				echo "Deleting sslh user"
+				deluser --quiet sslh > /dev/null || true
+			fi
+		fi
+	;;
+
+	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+	;;
+
+	*)
+		echo "postrm called with unknown argument \`$1'" >&2
+		exit 1
+	;;
+esac
+
+#DEBHELPER#
+
+exit 0

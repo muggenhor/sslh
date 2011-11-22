@@ -1,0 +1,62 @@
+# Translation of sslh debconf templates to French
+# Copyright (C) 2010 Debian French l10n team <debian-l10n-french@lists.debian.org>
+# This file is distributed under the same license as the sslh package.
+# Inspired on proftpd po template.
+#
+# Translators:
+# Guillaume Delacour <gui@iroqwa.org>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-02-13 01:15+0100\n"
+"Last-Translator: Guillaume Delacour <gui@iroqwa.org>\n"
+"Language-Team: French <debian-l10n-french@lists.debian.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "Depuis inetd"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "Indépendamment"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "Exécuter sslh :"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"sslh peut être lancé soit en tant que service depuis inetd, soit comme un "
+"serveur indépendant. Chaque méthode a ses avantages. Pour quelques "
+"connexions par jour, il est suggéré de lancer sslh depuis inetd afin de "
+"préserver les ressources du système."
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr ""
+"Au contraire, avec un trafic plus important, il est recommandé d'exécuter "
+"sslh indépendamment pour éviter de démarrer un nouveau processus pour chaque "
+"connexion entrante."

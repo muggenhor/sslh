@@ -1,0 +1,13 @@
+Template: sslh/inetd_or_standalone
+Type: select
+__Choices: from inetd, standalone
+Default: standalone
+_Description: Run sslh:
+ sslh can be run either as a service from inetd, or as a standalone
+ server. Each choice has its own benefits. With only a few connection
+ per day, it is probably better to run sslh from inetd in
+ order to save resources.
+ .
+ On the other hand, with many connections,
+ sslh should run as a standalone server to avoid spawning a new
+ process for each incoming connection.
