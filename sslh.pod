@@ -101,11 +101,11 @@ the results (even if it works!)
 =item B<--xmpp> I<target address>
 
 Interface and port on which to forward xmpp connections,
-typeically I<localhost:5222>.
+typically I<localhost:5222>.
 
 This is experimental, not even in prototype stage, just approaching
 proof-of-concept. If you have any XMPP-specific knowlegde to help implement
-this let me (me@mortis.eu know)
+this let me (me@mortis.eu) know.
 
 =item B<-v>, B<--verbose>
 
