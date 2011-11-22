@@ -53,6 +53,7 @@ typedef enum protocol_type {
     PROT_SSH,
     PROT_OPENVPN,
     PROT_TINC,
+    PROT_XMPP,
     PROT_SSL,
 } T_PROTO_ID;
 

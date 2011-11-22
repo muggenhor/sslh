@@ -34,6 +34,7 @@
 int is_ssh_protocol(const char *p, int len);
 int is_openvpn_protocol(const char *p, int len);
 int is_tinc_protocol(const char *p, int len);
+int is_xmpp_protocol(const char *p, int len);
 int is_true(const char *p, int len) { return 1; }
 
 struct proto protocols[] = {
@@ -41,6 +42,7 @@ struct proto protocols[] = {
     { 0,         "ssh",        "sshd",  {0},   is_ssh_protocol },
     { 0,         "openvpn",     NULL,   {0},   is_openvpn_protocol },
     { 0,         "tinc",        NULL,   {0},   is_tinc_protocol },
+    { 0,         "xmpp",        NULL,   {0},   is_xmpp_protocol },
     /* probe for SSL always successes: it's the default, and must be tried last
      **/
     { 0,        "ssl",          NULL,   {0},   is_true }
@@ -62,6 +64,7 @@ const char* USAGE_STRING =
 "--ssl: SSL address: where to connect an SSL connection.\n" \
 "--openvpn: OpenVPN address: where to connect an OpenVPN connection.\n" \
 "--tinc: tinc address: where to connect a tinc connection.\n" \
+"--xmpp: xmpp address: where to connect a xmpp connection.\n" \
 "-P: PID file. Default: /var/run/sslh.pid.\n" \
 "-i: Run as a inetd service.\n" \
 "";
@@ -339,6 +342,12 @@ int is_tinc_protocol( const char *p, int len)
     return !strncmp(p, "0 ", len);
 }
 
+int is_xmpp_protocol(const char* p, const int len)
+{
+    char buf[2];
+    return sscanf(p, "< ? xml version = %*['\"]%*[0-9.]%*['\"] ? %1[>]", buf) >= 1;
+}
+
 /* 
  * Read the beginning of data coming from the client connection and check if
  * it's a known protocol. Then leave the data on the defered
@@ -358,6 +367,8 @@ T_PROTO_ID probe_client_protocol(struct connection *cnx)
      * connection will just fail later normally). */
     if (n > 0) {
         defer_write(&cnx->q[1], buffer, n);
+        // Allow string parsing
+        buffer[n] = '\0';
 
         for (i = 0; i < ARRAY_SIZE(protocols); i++) {
             if (protocols[i].affected) {
