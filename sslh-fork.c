@@ -68,10 +68,9 @@ void start_shoveler(int in_socket)
 {
    fd_set fds;
    struct timeval tv;
-   struct sockaddr_storage *saddr;
+   struct addrinfo *saddr;
    int res;
    int out_socket;
-   char *target;
    struct connection cnx;
    T_PROTO_ID prot;
 
@@ -96,18 +95,14 @@ void start_shoveler(int in_socket)
    }
 
    saddr = &protocols[prot].saddr;
-   target = protocols[prot].description;
    if (protocols[prot].service && 
        check_access_rights(in_socket, protocols[prot].service)) {
        exit(0);
    }
 
    /* Connect the target socket */
-   out_socket = socket(saddr->ss_family, SOCK_STREAM, 0);
-   res = connect(out_socket, (struct sockaddr*)saddr, sizeof(addr_ssl));
-   CHECK_RES_DIE(res, "connect");
-   if (verbose)
-      fprintf(stderr, "connected to something\n");
+   out_socket = connect_addr(saddr, protocols[prot].description);
+   CHECK_RES_DIE(out_socket, "connect");
 
    cnx.q[1].fd = out_socket;
 
@@ -126,7 +121,7 @@ void start_shoveler(int in_socket)
    exit(0);
 }
 
-void main_loop(int *listen_sockets, int num_addr_listen)
+void main_loop(int listen_sockets[], int num_addr_listen)
 {
     int in_socket, i;
 
@@ -147,6 +142,7 @@ void main_loop(int *listen_sockets, int num_addr_listen)
             }
         }
     }
+    wait(NULL);
 }
 
 /* The actual main is in common.c: it's the same for both version of

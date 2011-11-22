@@ -61,7 +61,7 @@ struct proto {
     int affected;       /* are we actually using it? */
     char* description;  /* a string that says what it is (for logging and command-line parsing) */
     char* service;      /* service name to do libwrap checks */
-    struct sockaddr_storage saddr; /* where to switch that protocol */
+    struct addrinfo saddr; /* where to switch that protocol */
     int (*probe)(const char*, int); /* function to probe that protocol */
 };
 
@@ -94,10 +94,10 @@ struct connection {
 
 /* common.c */
 void init_cnx(struct connection *cnx);
-void start_listen_sockets(int sockfd[], struct sockaddr_storage addr[], int num_addr);
+int connect_addr(struct addrinfo *addr, char* cnx_name);
 int fd2fd(struct queue *target, struct queue *from);
-char* sprintaddr(char* buf, size_t size, struct sockaddr_storage* s);
-void resolve_name(struct sockaddr_storage *sock, char* fullname) ;
+char* sprintaddr(char* buf, size_t size, struct addrinfo *a);
+void resolve_name(struct addrinfo **out, char* fullname);
 T_PROTO_ID probe_client_protocol(struct connection *cnx);
 void log_connection(struct connection *cnx);
 int check_access_rights(int in_socket, char* service);
@@ -115,7 +115,8 @@ int defer_write(struct queue *q, void* data, int data_size);
 int flush_defered(struct queue *q);
 
 extern int probing_timeout, verbose, inetd;
-extern struct sockaddr_storage *addr_listen, addr_ssl, addr_ssh, addr_openvpn;
+extern struct sockaddr_storage addr_ssl, addr_ssh, addr_openvpn;
+extern struct addrinfo *addr_listen;
 extern const char* USAGE_STRING;
 extern char* user_name, *pid_file;
 extern const char* server_type;
