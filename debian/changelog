@@ -1,3 +1,9 @@
+sslh (1.10~rc1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Giel van Schijndel <me@mortis.eu>  Tue, 22 Nov 2011 13:19:03 +0100
+
 sslh (1.9-1) unstable; urgency=low
 
   * New upstream release (Closes: #632834, #611611)
