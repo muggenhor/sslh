@@ -403,8 +403,21 @@ char* sprintaddr(char* buf, size_t size, struct addrinfo *a)
                numeric ? NI_NUMERICHOST | NI_NUMERICSERV : 0 );
 
    if (res) {
-      fprintf(stderr, "sprintaddr:getnameinfo: %s\n", gai_strerror(res));
-      exit(1);
+      switch (((const struct sockaddr*)a->ai_addr)->sa_family)
+      {
+         case AF_INET:
+            inet_ntop(AF_INET, &((const struct sockaddr_in*)a->ai_addr)->sin_addr, host, sizeof(host));
+            snprintf(serv, sizeof(serv), "%u", ntohs(((const struct sockaddr_in*)a->ai_addr)->sin_port));
+            break;
+         case AF_INET6:
+            inet_ntop(AF_INET6, &((const struct sockaddr_in6*)a->ai_addr)->sin6_addr, host, sizeof(host));
+            snprintf(serv, sizeof(serv), "%u", ntohs(((const struct sockaddr_in6*)a->ai_addr)->sin6_port));
+            break;
+         default:
+            fprintf(stderr, "sprintaddr:getnameinfo(unknown family: %d): %s\n", a->ai_family, gai_strerror(res));
+            exit(1);
+            break;
+      }
    }
 
    snprintf(buf, size, "%s:%s", host, serv);
