@@ -44,7 +44,7 @@ die "error2: $!\n" unless $ssl_listen;
 my $sslh_pid;
 if (!($sslh_pid = fork)) {
     my $user = (getpwuid $<)[0]; # Run under current username
-    exec "./sslh-fork -v -u $user -p localhost:$sslh_port -s localhost:$ssh_port -l localhost:$ssl_port -P $pidfile";
+    exec "./sslh-fork -v -u $user -p localhost:$sslh_port --ssh localhost:$ssh_port --ssl localhost:$ssl_port -P $pidfile";
     #exec "./sslh-select -v -f -u $user -p localhost:$sslh_port -s localhost:$ssh_port -l localhost:$ssl_port -P $pidfile";
     #exec "valgrind --leak-check=full ./sslh-select -v -f -u $user -p localhost:$sslh_port -s localhost:$ssh_port -l localhost:$ssl_port -P $pidfile";
     exit 0;
