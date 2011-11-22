@@ -1,0 +1,22 @@
+Source: sslh
+Section: net
+Priority: extra
+Maintainer: Guillaume Delacour <gui@iroqwa.org>
+Build-Depends: debhelper (>= 7.0.50~), libwrap0-dev, binutils, po-debconf
+Standards-Version: 3.9.2
+Homepage: http://www.rutschle.net/tech/sslh.shtml
+Vcs-Browser: http://git.debian.org/?p=collab-maint/sslh.git
+Vcs-Git: git://git.debian.org/collab-maint/sslh.git
+
+Package: sslh
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, adduser, debconf (>= 0.5),
+         lsb-base (>= 3.0-6), update-inetd
+Recommends: apache2 | httpd, openssh-server | ssh-server
+Suggests: openbsd-inetd | inet-superserver
+Conflicts: libnet-proxy-perl
+Description: ssl/ssh multiplexer
+ sslh lets one accept both HTTPS and SSH connections on the
+ same port. It makes it possible to connect to an SSH server
+ on port 443 (e.g. from inside a corporate firewall) while
+ still serving HTTPS on that port.

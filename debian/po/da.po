@@ -1,0 +1,57 @@
+# Danish translations for sslh package.
+# Copyright (C) 2010 sslh & nedenstående oversættere.
+# This file is distributed under the same license as the sslh package.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010..
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-08-24 23:51+0200\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "fra inetd"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "enkeltstående"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "Kør sslh:"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"sslh kan køres enten som en tjeneste fra inetd, eller som en enkeltstående server. "
+"Hvert valg har sine egne fordele. Med få forbindelser per dag, er det sikkert "
+"bedre at køre sslh fra inetd for at spare på ressourcerne."
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr ""
+"På den anden side, med mange forbindelser, bør sslh køre som en enkeltstående "
+"server for at undgå dannelse af en ny proces for hver indkommende "
+"forbindelse."

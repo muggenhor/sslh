@@ -1,0 +1,3 @@
+version=3
+opts="dversionmangle=s/~/-/" \
+http://www.rutschle.net/tech/sslh-(.*)\.tar\.gz

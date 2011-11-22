@@ -1,0 +1,58 @@
+# ITALIAN TRANSLATION OF SSLH'S PO-DEBCONF FILE.
+# COPYRIGHT (C) 2010 THE SSHL'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sslh package.
+# Vincenzo Campanella <vinz65@gmail.com>, 2010.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh 1.7a-1\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-08-20 08:44+0200\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "da inetd"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "autonomo"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "Esegui sslh:"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"sslh può essere eseguito come servizio da inetd oppure come server autonomo. "
+"Ogni scelta ha i suoi vantaggi. Se si eseguono poche connessioni al giorno, "
+"probabilmente l'esecuzione da inetd è la scelta da preferire, al fine di "
+"risparmiare risorse."
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr ""
+"D'altro canto, se si eseguono molte connessioni, sslh potrebbe essere "
+"eseguito come server indipendente, onde evitare di lanciare un nuovo "
+"processo per ogni connessione in ingresso."

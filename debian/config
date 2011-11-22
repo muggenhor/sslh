@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+action=$1
+version=$2
+
+db_title sslh configuration
+
+db_input high sslh/inetd_or_standalone || true
+db_go  || true
+

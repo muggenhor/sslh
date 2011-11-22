@@ -1,0 +1,71 @@
+# sslh po-debconf translation to Spanish
+# Copyright (C) 2010 Software in the Public Interest
+# This file is distributed under the same license as the sslh package.
+#
+# Changes:
+# - Initial translation
+# Camaleón <noelamac@gmail.com>, 2010
+#
+# - Updates
+#
+#
+# Traductores, si no conocen el formato PO, merece la pena leer la
+# documentación de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+#
+# - El proyecto de traducción de Debian al español
+# http://www.debian.org/intl/spanish/
+# especialmente las notas y normas de traducción en
+# http://www.debian.org/intl/spanish/notas
+#
+# - La guía de traducción de po's de debconf:
+# /usr/share/doc/po-debconf/README-trans
+# o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh_1.7a-2\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-10-01 18:55+0100\n"
+"Last-Translator: Camaleón <noelamac@gmail.com>\n"
+"Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "desde inetd"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "de manera independiente"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "Ejecutar sslh:"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "sslh can be run either as a service from inetd, or as a standalone server. Each choice has its own benefits. With only a few connection per day, it is probably better to run sslh from inetd in order to save resources."
+msgstr "sslh se puede ejecutar como un servicio desde inetd o como un servidor independiente. Cada opción tiene sus ventajas. Si tiene pocas conexiones al día es probable que prefiera ejecutar sslh desde inetd para ahorrar recursos."
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "On the other hand, with many connections, sslh should run as a standalone server to avoid spawning a new process for each incoming connection."
+msgstr "Por otra parte, si tiene que gestionar muchas conexiones, debería ejecutar sslh como un servidor independiente para evitar que se genere un nuevo proceso por cada una de las conexiones entrantes."
+

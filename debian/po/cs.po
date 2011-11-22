@@ -1,0 +1,56 @@
+# Czech translation of PO debconf template for package sslh.
+# Copyright (C) 2010 Michal Simunek
+# This file is distributed under the same license as the sslh package.
+# Michal Simunek <michal.simunek@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh 1.7a-1\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-08-26 14:31+0200\n"
+"Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "z inetd"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "samostatně"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "Spouštět sslh:"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"sslh lze spouštět buď jako službu z inetd, nebo jako samostatný server. "
+"Každá volba má své výhody. S malým počtem spojení za den je lepší spouštět "
+"sslh z inetd, aby jste ušetřili zdroje."
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr ""
+"V opačném případě, s mnoha spojeními, by měl sslh běžet jako samostatný "
+"server, aby jste zabránili spuštění nového procesu pro každé příchozí spojení."

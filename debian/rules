@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Warning: PREFIX instead of DESTDIR in upstream Makefile
+override_dh_auto_install:
+	# auto install fork version, see debian/install for select version
+	dh_auto_install -- PREFIX=$(CURDIR)/debian/sslh/usr install
+
+# do not start daemon by default: force user to configure
+override_dh_installinit:
+	dh_installinit --no-start
+
+%:
+	dh $@

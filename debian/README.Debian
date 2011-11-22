@@ -1,0 +1,56 @@
+sslh configuration
+--------------------------
+
+To avoid installation breakage, the daemon is disabled by default to
+force the user to read documentation for the following reasons:
+
+- sslh needs a webserver that has ssl support (for example mod_ssl for Apache)
+If not, sslh seems to be useless.
+
+- sslh needs the webserver to *not* bind to all available ip on 443/tcp
+(but this is the default behaviour of all major webserver !)
+
+For this, you have to modify the default configuration, in this way:
+
+ * Apache (/etc/apache2/ports.conf, mod_ssl section)
+
+	Listen 443
+
+should become:
+
+	Listen 127.0.0.1:443
+
+ * lighttpd (/etc/lighttpd/conf-enabled/10-ssl.conf; ssl module enabled by
+ default):
+
+	$SERVER["socket"] == "0.0.0.0:443" {
+
+should become:
+
+	$SERVER["socket"] == "127.0.0.1:443" {
+
+And you have to modify the default sslh configuration (/etc/default/sslh) to
+listen to the IP address of your choice:
+
+	[...] -p 0.0.0.0:443 [...]
+
+should become:
+
+	[...] -p <ip_address_of_your_choice>:443 [...]
+
+Any others configuration examples for others webserver are welcome.
+
+You could also read /usr/share/doc/sslh/README, section "Configuration"
+or the full manpage sslh(8) for more configuration details.
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sat Feb 13 00:59:54 +0100 2009
+
+
+Inetd support
+--------------------------
+
+sslh have inetd support since 1.7a release.
+If used, inetd bind 443/tcp on all addresses, so your https server must bind
+an another unused port (444/tcp proposed).
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Mon, 26 Jul 2010 23:40:01 +0200

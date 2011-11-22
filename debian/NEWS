@@ -1,0 +1,6 @@
+sslh (1.9-1) unstable; urgency=low
+
+    This version add single-threaded select(2)-based binary.
+    The fork version is still the default one, see /etc/default/sslh
+
+ -- Guillaume Delacour <gui@iroqwa.org>  Sun, 14 Aug 2011 15:34:03 +0200

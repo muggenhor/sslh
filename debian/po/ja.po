@@ -1,0 +1,59 @@
+# sslh Debian package debconf translation for Japanese
+# Copyright (C) 2010 Guillaume Delacour <gui@iroqwa.org>
+# This file is distributed under the same license as the sslh package.
+# Hideki Yamane <henrich@debian.org>, 2010
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sslh 1.7a-2\n"
+"Report-Msgid-Bugs-To: sslh@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-13 01:27+0100\n"
+"PO-Revision-Date: 2010-09-16 01:10+0900\n"
+"Last-Translator: Hideki Yamane <henrich@debian.org>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "from inetd"
+msgstr "inetd から"
+
+#. Type: select
+#. Choices
+#: ../templates:1001
+msgid "standalone"
+msgstr "スタンドアロン"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid "Run sslh:"
+msgstr "sslh の動作:"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"sslh can be run either as a service from inetd, or as a standalone server. "
+"Each choice has its own benefits. With only a few connection per day, it is "
+"probably better to run sslh from inetd in order to save resources."
+msgstr ""
+"sslh は inetd から呼び出すサービスとしても、スタンドアロンのサーバとしても"
+"動作をさせることができます。どちらの選択肢にもそれぞれの利点があります。1 日"
+"に数回しか接続がない場合は、サーバのリソース消費を減らすために sslh を inetd "
+"から呼び出す方がおそらく良いでしょう。"
+
+#. Type: select
+#. Description
+#: ../templates:1002
+msgid ""
+"On the other hand, with many connections, sslh should run as a standalone "
+"server to avoid spawning a new process for each incoming connection."
+msgstr ""
+"一方、多数の接続がある場合は、各接続に対して新規プロセスを起動するのを避ける"
+"ため、sslh はスタンドアロンのサーバとして呼び出すべきでしょう。"
+
