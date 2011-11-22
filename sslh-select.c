@@ -55,14 +55,16 @@ int tidy_connection(struct connection *cnx, fd_set *fds, fd_set *fds2)
     int i;
 
     for (i = 0; i < 2; i++) {
-        if (verbose)
-            fprintf(stderr, "closing fd %d\n", cnx->q[i].fd);
+        if (cnx->q[i].fd != -1) {
+            if (verbose)
+                fprintf(stderr, "closing fd %d\n", cnx->q[i].fd);
 
-        close(cnx->q[i].fd);
-        FD_CLR(cnx->q[i].fd, fds);
-        FD_CLR(cnx->q[i].fd, fds2);
-        if (cnx->q[i].defered_data)
-            free(cnx->q[i].defered_data);
+            close(cnx->q[i].fd);
+            FD_CLR(cnx->q[i].fd, fds);
+            FD_CLR(cnx->q[i].fd, fds2);
+            if (cnx->q[i].defered_data)
+                free(cnx->q[i].defered_data);
+        }
     }
     init_cnx(cnx);
     return 0;
@@ -110,22 +112,17 @@ int accept_new_connection(int listen_socket, struct connection *cnx[], int* cnx_
     return in_socket;
 }
 
+
 /* Connect queue 1 of connection to SSL; returns new file descriptor */
-int connect_queue(struct connection *cnx, struct sockaddr_storage *addr, 
+int connect_queue(struct connection *cnx, struct addrinfo *addr, 
                   char* cnx_name,
                   fd_set *fds_r, fd_set *fds_w)
 {
     struct queue *q = &cnx->q[1];
-    int res;
 
-    q->fd = socket(addr->ss_family, SOCK_STREAM, 0);
-    res = connect(q->fd, (struct sockaddr*)addr, sizeof(*addr));
-    log_connection(cnx);
-    if (res == -1) {
-        tidy_connection(cnx, fds_r, fds_w);
-        log_message(LOG_ERR, "forward to %s failed\n", cnx_name);
-        return -1;
-    } else {
+    q->fd = connect_addr(addr, cnx_name);
+    if (q->fd != -1) {
+        log_connection(cnx);
         set_nonblock(q->fd);
         flush_defered(q);
         if (q->defered_data) {
@@ -134,6 +131,9 @@ int connect_queue(struct connection *cnx, struct sockaddr_storage *addr,
             FD_SET(q->fd, fds_r);
         }
         return q->fd;
+    } else {
+        tidy_connection(cnx, fds_r, fds_w);
+        return -1;
     }
 }
 
@@ -188,7 +188,7 @@ int is_fd_active(int fd, fd_set* set)
  * That way, each pair of file descriptor (read from one, write to the other)
  * is monitored either for read or for write, but never for both.
  */
-void main_loop(int *listen_sockets, int num_addr_listen)
+void main_loop(int listen_sockets[], int num_addr_listen)
 {
     fd_set fds_r, fds_w;  /* reference fd sets (used to init the next 2) */
     fd_set readfds, writefds; /* working read and write fd sets */
